@@ -1,7 +1,8 @@
-<table>
-    <tr *ngFor="let country of countries">
-        <td>{{country.countryId}}</td>
-        <td>{{country.countryName}}</td>
-    </tr>
-</table>
-  
+<button *ngIf="dataLoaded==false" class="btn btn-danger text-white" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+</button>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let country of countries">{{country.countryName}}</li>
+  </ul>
