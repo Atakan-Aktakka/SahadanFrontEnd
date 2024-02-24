@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Player } from '../models/Player/player';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/ListResponseModel';
-import { Country } from '../models/Country/country';
+
 @Injectable({
   providedIn: 'root'
 })
-export class CountryService {
-  
-  apiUrl = "https://localhost:7285/api/Country";
+export class PlayerService {
+
+  apiUrl = "https://localhost:7285/api/Player";
   constructor(private httpClient:HttpClient) { }
-  getCountry():Observable<ListResponseModel<Country>>{
-    return this.httpClient.get<ListResponseModel<Country>>(this.apiUrl);
+  getPlayer():Observable<ListResponseModel<Player>>{
+    return this.httpClient.get<ListResponseModel<Player>>(this.apiUrl);
 }
 }

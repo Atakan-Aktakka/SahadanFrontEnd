@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Team } from '../../models/Team/team';
-import { TeamResponseModel } from '../../models/Team/teamResponseModel';
+
+import { ListResponseModel } from '../../models/ListResponseModel';
+import { TeamService } from '../../services/team.service';
 
 @Component({
   selector: 'app-team',
@@ -10,14 +12,15 @@ import { TeamResponseModel } from '../../models/Team/teamResponseModel';
 })
 export class TeamComponent {
   teams: Team[] = [];
-  apiUrl = "https://localhost:7285/api/Team";
-  constructor(private httpClient:HttpClient){}
+  dataLoaded = false;
+  constructor(private teamService: TeamService) { }
   ngOnInit(): void {
     this.getTeam();
   }
-  getTeam(){
-      this.httpClient.get<TeamResponseModel>(this.apiUrl).subscribe((response) => {
-        this.teams = response.result;
-      });
-  }
+  getTeam() {
+    this.teamService.getTeam().subscribe(response => {
+      this.teams = response.data;
+      this.dataLoaded = true;
+    })
+  };
 }

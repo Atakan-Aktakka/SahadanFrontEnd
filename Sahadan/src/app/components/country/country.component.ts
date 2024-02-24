@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Country } from '../../models/Country/country';
-import { CountryResponseModel } from '../../models/Country/countryResponseModel';
 import { CountryService } from '../../services/country.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { CountryService } from '../../services/country.service';
 export class CountryComponent implements OnInit{
   countries: Country[] = []; 
   dataLoaded = false;
-
+  currentCountry:Country;
  /* countryresponseModel: CountryResponseModel = {
     data: this.countries,
     message: "",
@@ -25,11 +24,27 @@ export class CountryComponent implements OnInit{
   getCountry(){
     console.log("Test Başladı");
     this.countryService.getCountry().subscribe(response => {
-      this.countries = response.result;
+      this.countries = response.data;
       this.dataLoaded = true;
-      console.log(response.errors);
+      console.log(response.data);
     })
     console.log("Test");
   };
- 
+  setCurrentCountry(country:Country){
+   this.currentCountry = country;
+  }
+  getCurrentCountryClass(country:Country){
+    if(country == this.currentCountry){
+      return "list-group-item active";
+    }else{
+      return "list-group-item";
+    }
+  }
+  getAllCountryClass(){
+    if(!this.currentCountry){
+      return "list-group-item active";
+    }else{
+      return "list-group-item";
+    }
+  }
 }

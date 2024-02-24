@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Legue } from '../../models/Legue/legue';
-import { LegueResponseModel } from '../../models/Legue/legueResponseModel';
+import { LegueService } from '../../services/legue.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-legue',
   templateUrl: './legue.component.html',
@@ -9,14 +10,30 @@ import { LegueResponseModel } from '../../models/Legue/legueResponseModel';
 })
 export class LegueComponent {
   legues: Legue[] = [];
-  apiUrl = "https://localhost:7285/api/Legue";
-  constructor(private httpClient:HttpClient){}
+  dataLoaded = false;
+
+  constructor(private legueService:LegueService, private activatedRoute:ActivatedRoute){}
   ngOnInit(): void {
-    this.getLegue();
+   this.activatedRoute.params.subscribe(params => {
+      if(params["countryId"]){
+        this.getLegueByCountryId(params["countryId"])
+      }else{
+        this.getLegue()
+      }
+    })
+   
+      
   }
   getLegue(){
-      this.httpClient.get<LegueResponseModel>(this.apiUrl).subscribe((response) => {
-        this.legues = response.result;
-      });
+   this.legueService.getLegue().subscribe(response => {
+      this.legues = response.data;
+      this.dataLoaded = true;
+      })
+  };
+  getLegueByCountryId(countryId:number){
+    this.legueService.getlegueByCountryId(countryId).subscribe(response => {
+      this.legues = response.data;
+      this.dataLoaded = true;
+    })
   }
 }

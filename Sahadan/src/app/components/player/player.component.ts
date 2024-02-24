@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Player } from '../../models/Player/player';
-import { PlayerResponseModel } from '../../models/Player/playerResponseModel';
+import { ListResponseModel } from '../../models/ListResponseModel';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-player',
@@ -10,15 +11,17 @@ import { PlayerResponseModel } from '../../models/Player/playerResponseModel';
 })
 export class PlayerComponent {
   players: Player[] = [];
-  apiUrl = "https://localhost:7285/api/Player";
-  constructor(private httpClient:HttpClient){}
+  dataLoaded = false;
+  constructor(private playerService:PlayerService){}
   ngOnInit(): void {
     this.getPlayer();
   }
   getPlayer(){
-      this.httpClient.get<PlayerResponseModel>(this.apiUrl).subscribe((response) => {
-        this.players = response.result;
-      });
+      
+    this.playerService.getPlayer().subscribe(response => {
+      this.players = response.data;
+      this.dataLoaded = true;
+      })
   }
 
 }
