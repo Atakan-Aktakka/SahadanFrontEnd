@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LegueComponent {
   legues: Legue[] = [];
   dataLoaded = false;
-
+  currentLegue:Legue;
   constructor(private legueService:LegueService, private activatedRoute:ActivatedRoute){}
   ngOnInit(): void {
    this.activatedRoute.params.subscribe(params => {
@@ -30,6 +30,9 @@ export class LegueComponent {
       this.dataLoaded = true;
       })
   };
+  setCurrentLegue(legue:Legue){
+    this.currentLegue = legue;
+  }
   getLegueByCountryId(countryId:number){
     this.legueService.getlegueByCountryId(countryId).subscribe(response => {
       this.legues = response.data;

@@ -9,9 +9,14 @@ import { ListResponseModel } from '../models/ListResponseModel';
 })
 export class PlayerService {
 
-  apiUrl = "https://localhost:7285/api/Player";
+  apiUrl = "https://localhost:7285/api/";
   constructor(private httpClient:HttpClient) { }
   getPlayer():Observable<ListResponseModel<Player>>{
-    return this.httpClient.get<ListResponseModel<Player>>(this.apiUrl);
-}
+    var newPath = this.apiUrl + "Player";
+    return this.httpClient.get<ListResponseModel<Player>>(newPath);
+  }
+  getPlayerByTeamId(teamId:number):Observable<ListResponseModel<Player>>{
+    var newPath = this.apiUrl + "Player/teamId=" + teamId;
+    return this.httpClient.get<ListResponseModel<Player>>(newPath);
+  }
 }

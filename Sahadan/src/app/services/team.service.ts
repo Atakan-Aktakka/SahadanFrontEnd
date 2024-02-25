@@ -9,9 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TeamService {
 
-  apiUrl = "https://localhost:7285/api/Team";
+  apiUrl = "https://localhost:7285/api/";
   constructor(private httpClient:HttpClient) { }
   getTeam():Observable<ListResponseModel<Team>>{
-    return this.httpClient.get<ListResponseModel<Team>>(this.apiUrl);
+    let newPath = this.apiUrl + "Team";
+    return this.httpClient.get<ListResponseModel<Team>>(newPath);
 }
+  getTeamByLegueId(legueId:number):Observable<ListResponseModel<Team>>{
+    console.log(legueId)
+    let newPath = this.apiUrl + "Team/legueId="+legueId;
+    return this.httpClient.get<ListResponseModel<Team>>(newPath);
+  }
 }

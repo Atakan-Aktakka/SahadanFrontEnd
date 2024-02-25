@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Player } from '../../models/Player/player';
 import { ListResponseModel } from '../../models/ListResponseModel';
 import { PlayerService } from '../../services/player.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-player',
@@ -12,9 +13,15 @@ import { PlayerService } from '../../services/player.service';
 export class PlayerComponent {
   players: Player[] = [];
   dataLoaded = false;
-  constructor(private playerService:PlayerService){}
+  constructor(private playerService:PlayerService,private activateRoute:ActivatedRoute){}
   ngOnInit(): void {
-    this.getPlayer();
+    this.activateRoute.params.subscribe(params => {
+      if(params["teamId"]){
+        this.getPlayerByTeamId(params["teamId"])
+      }else{
+        this.getPlayer()
+      }
+    })
   }
   getPlayer(){
       
@@ -22,6 +29,12 @@ export class PlayerComponent {
       this.players = response.data;
       this.dataLoaded = true;
       })
+  };
+  getPlayerByTeamId(teamId:number){
+    this.playerService.getPlayerByTeamId(teamId).subscribe(response => {
+      this.players = response.data;
+      this.dataLoaded = true;
+    })
   }
 
 }

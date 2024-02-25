@@ -6,7 +6,7 @@
 <ul class="list-group">
     <li [class]="getAllCountryClass()" routerLink="">Tüm Ligler</li>
     <li (click)="setCurrentCountry(country)"
-    routerLink="/countries/country/{{country.countryId}}"
+    routerLink="/countries/legues/{{country.countryId}}"
      [class]="getCurrentCountryClass(country)" *ngFor="let country of countries">{{country.countryName}}</li>
   </ul>
  <h5 *ngIf="currentCountry">{{currentCountry.countryName}}</h5> 

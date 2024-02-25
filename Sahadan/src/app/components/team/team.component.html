@@ -1,7 +1,15 @@
-<table>
-    <tr *ngFor="let team of teams">
-        <td>{{team.teamId}}</td>
-        <td>{{team.teamName}}</td>
-    </tr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Team ID</th>
+            <th>Team Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <tr *ngFor="let team of teams" routerLink="/teams/players/{{team.teamId}}">
+            <td>{{team.teamId}}</td>
+            <td>{{team.teamName}}</td>
+        </tr>
+    </tbody>
 </table>
-  

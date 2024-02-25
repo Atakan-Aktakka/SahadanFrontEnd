@@ -1,6 +1,15 @@
 <table class="table">
-    <tr *ngFor="let legue of legues">
-        <td>{{legue.legueId}}</td>
-        <td>{{legue.legueName}}</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Legue ID</th>
+            <th>Legue Name</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr *ngFor="let legue of legues" routerLink="/legues/teams/{{legue.legueId}}">
+            <td>{{legue.legueId}}</td>
+            <td>{{legue.legueName | uppercase}}</td>
+        </tr>
+    </tbody>
 </table>

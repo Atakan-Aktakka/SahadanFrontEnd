@@ -8,9 +8,9 @@ import { CountryComponent } from './components/country/country.component';
 
 const routes: Routes = [
   { path: "",pathMatch:"full", component: LegueComponent },
-  {path: "countries/country/:countryId", component: LegueComponent},
-  { path: "team", component: TeamComponent },
-  { path: "player", component: PlayerComponent },
+  {path: "countries/legues/:countryId", component: LegueComponent},
+  { path: "legues/teams/:legueId", component: TeamComponent },
+  { path: "teams/players/:teamId", component: PlayerComponent },
 ];
 
 @NgModule({

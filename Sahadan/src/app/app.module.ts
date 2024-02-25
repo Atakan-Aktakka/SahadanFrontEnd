@@ -9,6 +9,7 @@ import { CountryComponent } from './components/country/country.component';
 import { PlayerComponent } from './components/player/player.component';
 import { TeamComponent } from './components/team/team.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NaviComponent } from './components/navi/navi.component';
     CountryComponent,
     PlayerComponent,
     TeamComponent,
-    NaviComponent
+    NaviComponent,
+    VatAddedPipe
   ],
   imports: [
     BrowserModule,
