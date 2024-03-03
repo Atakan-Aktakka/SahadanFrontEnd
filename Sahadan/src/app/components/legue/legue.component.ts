@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
 import { Legue } from '../../models/Legue/legue';
 import { LegueService } from '../../services/legue.service';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,7 @@ export class LegueComponent {
   legues: Legue[] = [];
   dataLoaded = false;
   currentLegue:Legue;
+  filterText = "";
   constructor(private legueService:LegueService, private activatedRoute:ActivatedRoute){}
   ngOnInit(): void {
    this.activatedRoute.params.subscribe(params => {
