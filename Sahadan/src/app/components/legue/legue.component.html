@@ -11,6 +11,7 @@
             <th>Legue ID</th>
             <th>Legue Name</th>
             <th>Legue Logo</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
             <td>{{legue.legueId}}</td>
             <td>{{legue.legueName | uppercase}}</td>
             <td><img [src]="legue.legueLogo" alt="legue logo" width="50" height="50"></td>
+          <!--  <td><button (click)="addToCart(legue)" 
+                type="button" class="btn btn-success">Sepete ekle</button>
+            </td>-->
         </tr>
     </tbody>
 </table>

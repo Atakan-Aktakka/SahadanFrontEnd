@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Legue } from '../../models/Legue/legue';
 import { LegueService } from '../../services/legue.service';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-legue',
   templateUrl: './legue.component.html',
@@ -13,7 +14,7 @@ export class LegueComponent {
   dataLoaded = false;
   currentLegue:Legue;
   filterText = "";
-  constructor(private legueService:LegueService, private activatedRoute:ActivatedRoute){}
+  constructor(private legueService:LegueService,  private toastrService:ToastrService,private activatedRoute:ActivatedRoute){}
   ngOnInit(): void {
    this.activatedRoute.params.subscribe(params => {
       if(params["countryId"]){
@@ -40,4 +41,13 @@ export class LegueComponent {
       this.dataLoaded = true;
     })
   }
+  addToCart(product:Legue){
+    if(product.legueId===1){
+      this.toastrService.error("Hata","Bu ürün sepete eklenemez")
+    }else{
+      this.toastrService.success("Legue eklendi",product.legueName)
+     
+    }
+ 
+}
 }

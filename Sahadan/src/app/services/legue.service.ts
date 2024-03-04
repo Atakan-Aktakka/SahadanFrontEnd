@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Legue } from '../models/Legue/legue';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/ListResponseModel';
+import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,9 @@ export class LegueService {
   getlegueByCountryId(countryId:number):Observable<ListResponseModel<Legue>>{
     let newPath = this.apiUrl + "Legue/getbycountry/countryId="+countryId;
     return this.httpClient.get<ListResponseModel<Legue>>(newPath);
+  }
+  add(legue:Legue):Observable<SingleResponseModel<Legue>>{
+    let newPath = this.apiUrl + "Legue/Legueadd";
+    return this.httpClient.post<SingleResponseModel<Legue>>(newPath,legue);
   }
 }

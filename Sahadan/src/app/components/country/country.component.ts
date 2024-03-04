@@ -35,14 +35,14 @@ export class CountryComponent implements OnInit{
   }
   getCurrentCountryClass(country:Country){
     if(country == this.currentCountry){
-      return "list-group-item active";
+      return "list-group-item list-group-item-success active";
     }else{
       return "list-group-item";
     }
   }
   getAllCountryClass(){
     if(!this.currentCountry){
-      return "list-group-item active";
+      return "list-group-item list-group-item-success active";
     }else{
       return "list-group-item";
     }

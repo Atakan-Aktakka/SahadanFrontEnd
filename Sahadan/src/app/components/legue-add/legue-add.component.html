@@ -1,1 +1,44 @@
-<p>legue-add works!</p>
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Lig ekle</h5></div>
+            <div class="card-body">
+                <form [formGroup]="legueAddForm">
+                    <div class="mb-3">
+                        <label for="leagueName">Lig Adı</label>
+                        <div class="form-group">
+                            <input type="text" 
+                            id="leagueName" 
+                            formControlName="leagueName" class="form-control" 
+                            placeholder="Lig adı"/>
+                        </div>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="leagueCountry">Lig Ülkesi</label>
+                        <div class="form-group">
+                            <input type="text" 
+                            id="leagueCountry" 
+                            formControlName="leagueCountry" class="form-control" 
+                            placeholder="Lig ülkesi"/>
+                        </div>
+                    </div>
+                   <div class="mb-3">
+                    <label for="leagueLogo">Lig Logosu</label>
+                    <div class="form-group">
+                        <input type="file" 
+                        id="leagueLogo" 
+                        formControlName="leagueLogo" class="form-control" 
+                        placeholder="Lig logosu"/>
+                    </div>
+                   </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
