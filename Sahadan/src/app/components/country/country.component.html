@@ -1,12 +1,12 @@
-<button *ngIf="dataLoaded==false" class="btn btn-danger text-white" type="button" disabled>
+<button *ngIf="dataLoaded == false" class="btn btn-danger text-white" type="button" disabled>
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 
 <ul class="list-group">
-    <li [class]="getAllCountryClass()" routerLink="">Tüm Ligler</li>
+    <li [class]="getAllCountryClass()" routerLink="">All Leagues</li>
     <li (click)="setCurrentCountry(country)"
-    routerLink="/countries/legues/{{country.countryId}}"
-     [class]="getCurrentCountryClass(country)" *ngFor="let country of countries">{{country.countryName}}</li>
-  </ul>
- <h5 *ngIf="currentCountry">{{currentCountry.countryName}}</h5> 
+        routerLink="/countries/leagues/{{country.countryId}}"
+        [class]="getCurrentCountryClass(country)" *ngFor="let country of countries">{{country.countryName}}</li>
+</ul>
+<h5 *ngIf="currentCountry">{{currentCountry.countryName}}</h5>

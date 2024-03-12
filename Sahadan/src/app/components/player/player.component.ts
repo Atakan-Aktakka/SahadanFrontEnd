@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Player } from '../../models/Player/player';
-import { ListResponseModel } from '../../models/ListResponseModel';
 import { PlayerService } from '../../services/player.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PlayerComponent {
   players: Player[] = [];
   dataLoaded = false;
+  filterText = "";
   constructor(private playerService:PlayerService,private activateRoute:ActivatedRoute){}
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {

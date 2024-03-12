@@ -1,28 +1,24 @@
 <div class="form-group">
-    <label for="filterText">Ara</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
-  </div>
-  <div *ngIf="filterText.length>5" class="alert alert-success">
-    {{filterText}} aradınız
-  </div>
+    <label for="filterText">Search</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Enter search term">
+</div>
+<div *ngIf="filterText.length > 5" class="alert alert-success">
+    You searched for {{filterText}}
+</div>
 <table class="table">
     <thead>
         <tr>
-            <th>Legue ID</th>
-            <th>Legue Name</th>
-            <th>Legue Logo</th>
+            <th>League ID</th>
+            <th>League Name</th>
+            <th>League Logo</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-
-        <tr *ngFor="let legue of legues | filterPipe:filterText" routerLink="/legues/teams/{{legue.legueId}}">
-            <td>{{legue.legueId}}</td>
-            <td>{{legue.legueName | uppercase}}</td>
-            <td><img [src]="legue.legueLogo" alt="legue logo" width="50" height="50"></td>
-          <!--  <td><button (click)="addToCart(legue)" 
-                type="button" class="btn btn-success">Sepete ekle</button>
-            </td>-->
+        <tr *ngFor="let league of legues | filterPipe:filterText" routerLink="/legues/teams/{{league.legueId}}">
+            <td>{{league.legueId}}</td>
+            <td>{{league.legueName | uppercase}}</td>
+            <td><img [src]="league.legueLogo" alt="league logo" width="50" height="50"></td>
         </tr>
     </tbody>
 </table>

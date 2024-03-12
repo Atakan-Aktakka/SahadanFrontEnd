@@ -15,6 +15,8 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { LegueAddComponent } from './components/legue-add/legue-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FilterteamPipe } from './pipes/filterteam.pipe';
+import { FilterplayerPipe } from './pipes/filterplayer.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     FilterPipePipe,
     LegueAddComponent,
     LoginComponent,
+    FilterteamPipe,
+    FilterplayerPipe,
     
   ],
   imports: [

@@ -41,13 +41,4 @@ export class LegueComponent {
       this.dataLoaded = true;
     })
   }
-  addToCart(product:Legue){
-    if(product.legueId===1){
-      this.toastrService.error("Hata","Bu ürün sepete eklenemez")
-    }else{
-      this.toastrService.success("Legue eklendi",product.legueName)
-     
-    }
- 
-}
 }

@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TeamComponent {
   teams: Team[] = [];
   dataLoaded = false;
+  filterText = "";
   constructor(private teamService: TeamService,private activateRoute:ActivatedRoute) { }
   ngOnInit(): void {
    this.activateRoute.params.subscribe(params => {
